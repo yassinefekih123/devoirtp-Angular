@@ -1,0 +1,95 @@
+<mat-toolbar color="primary">
+  <span>Accueil</span>
+  
+  <!-- stats grid (restored) -->
+  <mat-grid-list cols="3" rowHeight="48px" class="toolbar-grid stats-grid">
+    @for (item of dataSource(); track item.name) {
+      <mat-grid-tile>
+        <div class="toolbar-tile">
+          <div class="tile-name">{{ item.name }}</div>
+          <div class="tile-value">{{ item.value }}</div>
+        </div>
+      </mat-grid-tile>
+    }
+  </mat-grid-list>
+
+  <!-- toolbar grid showing Connexion and Inscription -->
+  <mat-grid-list cols="2" rowHeight="48px" class="toolbar-grid actions-grid">
+    <mat-grid-tile>
+      <div class="toolbar-tile">
+        <button mat-button color="accent" routerLink="/connexion">Connexion</button>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="toolbar-tile">
+        <button mat-button color="accent" routerLink="/inscription">Inscription</button>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <span class="spacer"></span>
+  @if (isConnected()) {
+    <button mat-raised-button color="warn" (click)="onLogout()">Déconnexion</button>
+  }
+</mat-toolbar>
+
+<div class="content">
+  <mat-tab-group>
+    <mat-tab label="Tableau de Bord">
+      <h3>Bienvenue sur votre tableau de bord</h3>
+      <p>Cette application vous permet de gérer vos comptes.</p>
+    </mat-tab>
+    <mat-tab label="Liste">
+      <mat-grid-list cols="3" rowHeight="100px">
+        <mat-grid-tile>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Option 1</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              Description de l'option 1
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Option 2</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              Description de l'option 2
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Option 3</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              Description de l'option 3
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-tab>
+    <mat-tab label="Table">
+      <table class="mat-elevation-z8">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Valeur</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (element of dataSource(); track element.name) {
+            <tr>
+              <td>{{ element.name }}</td>
+              <td>{{ element.value }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </mat-tab>
+  </mat-tab-group>
+</div>

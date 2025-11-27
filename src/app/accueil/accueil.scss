@@ -1,0 +1,85 @@
+:root {
+  --card-radius: 14px;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+:host {
+  display: block;
+  background-color: #f0f4ff;
+  min-height: 100vh;
+}
+
+/* Toolbar spacing */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Main content spacing */
+.content {
+  padding: 24px;
+  width: 100%;
+}
+
+/* Toolbar */
+mat-toolbar {
+  margin-bottom: 24px;
+  border-radius: 10px;
+  box-shadow: var(--card-shadow);
+}
+
+/* Tabs */
+mat-tab-group {
+  margin-top: 24px;
+  background: var(--mat-sys-surface-container-low);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 8px;
+}
+
+/* Grid list spacing */
+mat-grid-list {
+  margin: 24px 0;
+}
+
+/* Cards */
+mat-card {
+  padding: 20px;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* Tables */
+table {
+  width: 100%;
+  margin-top: 24px;
+  border-collapse: collapse;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  background: var(--mat-sys-surface-container-low);
+  box-shadow: var(--card-shadow);
+
+  thead tr {
+    background-color: var(--mat-sys-surface-container);
+  }
+
+  th,
+  td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--mat-sys-outline-variant);
+  }
+
+  tbody tr {
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--mat-sys-surface-container-lowest);
+      cursor: pointer;
+    }
+  }
+}
